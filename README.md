@@ -89,26 +89,6 @@ and open in the browser at `127.0.0.1:8888`
 
 
 
-## Big Data cluster
-
-Connect with 
-
-```
-ssh -p 30 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
-```
-
-Add Anaconda binares to your PATH
-
-```
-export PATH=/etc/anaconda3/bin:$PATH
-```
-
-This is needed to use Yarn as the master for Spark
-
-```
-export HADOOP_CONF_DIR=/etc/hadoop/conf
-```
-
 ## Docker
 
 In order to ease the setting-up of the environment, we also prepared a [Docker](https://www.docker.com/) container that provides a ready-to-use environment. See `docker` folder for installing Docker, downloading the course container, and get started with it.
@@ -159,6 +139,71 @@ jupyter notebook
 ```
 
 and open in the browser at `127.0.0.1:8888`
+
+## Big Data cluster
+
+### Connection
+
+Connect with 
+
+```
+ssh -p 30 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
+```
+
+if you access from a private connection, or 
+
+```
+ssh -p 3128 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
+```
+
+if you access from 'eduroam' network.
+
+Note:
+
+*  The 'LaPlaine' and 'Solbosch' Wifi will not work due to port restrictions. 
+* -L is for port redirections. This is needed to have access to any 'Web' services from the cluster. 
+* Port redirections can be a bit tricky. To sum up:
+	* Jupyter is available on port 8000, at jupyter:8000
+	* Hue is available on port 8888, at hue:8888
+	* The Hadoop web UI is available on port 8088, at cdh02:8888
+* More generally: There are a number of other Web services available from the cluster (to be detailed later), and there might be some dynamic changes in these address:ports (for example, the Hadoop Web UI may not always be available at cdh02:8088 due to load balancing - also to be detailed later). 
+
+### Environment variable setup
+
+#### Anaconda
+
+Add Anaconda binaries to your PATH
+
+```
+export PATH=/etc/anaconda3/bin:$PATH
+```
+
+#### Spark
+
+On the cluster, the following environment variables should be set:
+
+```
+# For Yarn, so that Spark knows where it runs
+export HADOOP_CONF_DIR=/etc/hadoop/conf
+# For Python, so Spark knows which version to use (and we want Anaconda to be used, so we have access to numpy, pandas, and so forth)
+export PYSPARK_PYTHON=/etc/anaconda3/bin/python
+export PYSPARK_DRIVER_PYTHON=/etc/anaconda3/bin/python
+```
+
+#### Connect to Jupyter
+
+Simply connect on port 8000 locally (thanks to the SSH redirection), at `127.0.0.1:8000` in your browser.
+
+For pushing data on the cluster, the best is to use SFTP. However, the notebook allows you to upload files ('upload' button at the top right corner), which you can use as a quick workaround to get a notebook on the cluster.
+
+
+#### Test with Check_Setup
+
+* Upload notebook from  `Check_Setup/Demo_RDD_cluster.ipynb` 
+* Run all cells
+
+Follow instructions in `Check_Setup/Demo_RDD_cluster.ipynb` to have access to Spark UI.
+
 
 ## FAQ
 
