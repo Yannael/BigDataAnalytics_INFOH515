@@ -112,7 +112,7 @@ to use Anaconda Python.
 
 Download from https://spark.apache.org/downloads.html (Use version 2.2.1, prebuilt for Apache Hadoop 2.7). 
 
-Untar and add executables to your PATH
+Untar and add executables to your PATH, as well as Python libraries to PYTHONPATH
 
 ```
 export SPARK_HOME=where_you_untarred_spark
@@ -144,23 +144,21 @@ and open in the browser at `127.0.0.1:8888`
 
 ### Connection
 
-Connect with 
+In general (wired connection on campus, from home, or reasonably open wifi):
 
 ```
 ssh -p 30 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
 ```
 
-if you access from a private connection, or 
+On Eduroam (port 30 is blocked)
 
 ```
 ssh -p 3128 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
 ```
 
-if you access from 'eduroam' network.
-
 Note:
 
-*  The 'LaPlaine' and 'Solbosch' Wifi will not work due to port restrictions. 
+*  The 'LaPlaine' and 'Solbosch' Wifi will not work due to strict port restrictions. 
 * -L is for port redirections. This is needed to have access to any 'Web' services from the cluster. 
 * Port redirections can be a bit tricky. To sum up:
 	* Jupyter is available on port 8000, at jupyter:8000
