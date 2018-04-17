@@ -4,7 +4,7 @@
 
 # Exercise classes - Overview 
 
-This repository contains the material for the execise classes of the ULB/VUB Big Data Analytics master course (first semester 2018) - Advanced analytics part.
+This repository contains the material for the exercise classes of the ULB/VUB Big Data Analytics master course (first semester 2018) - Advanced analytics part.
 
 These hands-on sessions provide:
 
@@ -17,12 +17,18 @@ These hands-on sessions provide:
 	After detailing the Map/Reduce techniques for solving these problems, each session ends with an example on how to use the corresponding algorithm with Spark ML, and get insights into how Spark distributes the task using the Spark user interface.  
 * **Session 5**: An overview of a deep learning framework (Keras/Tensorflow), and its use for image classification using convolutional neural networks.
 
-Additionally to these sessions, the `Supplementary_material` repository also contains examples for
-
-* `project/KafkaSparkStreaming*`: Example of streaming architecture that uses Kafka (for publishing streaming content) and Spark Streaming (for ingesting and processing streaming content) 
-* `mrmr`: An Map/Reduce implementation of the mRMR (Minimum Redundancy Maximum Relevance) feature selection algorithm.
 
 The material is available as a set of Jupyter notebooks. 
+
+# Clone this repository
+
+From the command line, use
+
+```
+git clone https://github.com/Yannael/BigDataAnalytics_INFOH515
+```
+
+On the course cluster, you will have to use SFTP to send the folder content. 
 
 # Environment setup 
 
@@ -44,7 +50,7 @@ export PATH=$ANACONDA_HOME/bin:$PATH
 
 ### Spark
 
-DDownload from https://spark.apache.org/downloads.html (Use version 2.2.1, prebuilt for Apache Hadoop 2.7). Untar and add executables to your PATH, as well as Python libraries to PYTHON_PATH
+Download from https://spark.apache.org/downloads.html (Use version 2.2.1, prebuilt for Apache Hadoop 2.7). Untar and add executables to your PATH, as well as Python libraries to PYTHONPATH
 
 ```
 export SPARK_HOME=where_you_untarred_spark
@@ -88,25 +94,18 @@ and open in the browser at `127.0.0.1:8888`
 Connect with 
 
 ```
-ssh -p 30 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yleborgn@bigdata.ulb.ac.be 
+ssh -p 30 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
 ```
 
-If you get the following message 
+Add Anaconda binares to your PATH
 
 ```
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-```
-
-Open `.ssh/known_hosts`, delete all entries starting with `bigdata.ulb.ac.be`, and retry connection. 
-
-
-```
-#Add Anaconda binares to your PATH
 export PATH=/etc/anaconda3/bin:$PATH
+```
 
-#This is needed to use Yarn as the master for Spark
+This is needed to use Yarn as the master for Spark
+
+```
 export HADOOP_CONF_DIR=/etc/hadoop/conf
 ```
 
@@ -118,14 +117,14 @@ In order to ease the setting-up of the environment, we also prepared a [Docker](
 
 ### Anaconda
 
-Anaconda can be found in `/serveur/logiciels/anaconda3`. Use
+Anaconda can be found in `/serveur/logiciels/anaconda3`. Simply use
 
 ```
 export ANACONDA_HOME=/serveur/logiciels/anaconda3
 export PATH=$ANACONDA_HOME/bin:$PATH
 ``` 
 
-to set up Anaconda Python. 
+to use Anaconda Python. 
 
 ### Spark
 
@@ -159,4 +158,16 @@ jupyter notebook
 
 and open in the browser at `127.0.0.1:8888`
 
+## FAQ
 
+### Course cluster
+
+If you get the following message 
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+```
+
+Open `.ssh/known_hosts`, delete all entries starting with `bigdata.ulb.ac.be`, and retry connection. 
