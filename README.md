@@ -28,7 +28,7 @@ From the command line, use
 git clone https://github.com/Yannael/BigDataAnalytics_INFOH515
 ```
 
-On the course cluster, you will have to use SFTP to send the folder content. 
+If using the course cluster, you will have to use SFTP to send this folder to the cluster. 
 
 # Environment setup 
 
@@ -55,7 +55,7 @@ Download from https://spark.apache.org/downloads.html (Use version 2.2.1, prebui
 ```
 export SPARK_HOME=where_you_untarred_spark
 export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
-export PYTHONPATH="SPARK_HOME/python/lib/pyspark.zip: SPARK_HOME/python/lib/py4j-0.10.4-src.zip"
+export PYTHONPATH="SPARK_HOME/python/lib/pyspark.zip:SPARK_HOME/python/lib/py4j-0.10.4-src.zip"
 ``` 
 
 ### Kafka
@@ -113,6 +113,8 @@ export HADOOP_CONF_DIR=/etc/hadoop/conf
 
 In order to ease the setting-up of the environment, we also prepared a [Docker](https://www.docker.com/) container that provides a ready-to-use environment. See `docker` folder for installing Docker, downloading the course container, and get started with it.
 
+Note that the [Dockerfile](https://github.com/Yannael/BigDataAnalytics_INFOH515/blob/master/Docker/Dockerfile) script essentially follows the steps for the 'local' installation. 
+
 ## Computer rooms
 
 ### Anaconda
@@ -135,7 +137,7 @@ Untar and add executables to your PATH
 ```
 export SPARK_HOME=where_you_untarred_spark
 export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
-export PYTHONPATH="SPARK_HOME/python/lib/pyspark.zip: SPARK_HOME/python/lib/py4j-0.10.4-src.zip"
+export PYTHONPATH="SPARK_HOME/python/lib/pyspark.zip:SPARK_HOME/python/lib/py4j-0.10.4-src.zip"
 ``` 
  
 Due to permission restrictions, you should manually add the execution flags to the executables that will be needed to start spark sessions, more specifically
