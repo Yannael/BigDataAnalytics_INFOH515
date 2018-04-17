@@ -26,7 +26,7 @@ The material is available as a set of Jupyter notebooks.
 
 # Environment setup 
 
-These notebooks rely on different technologies and frameworks for Big Data and machine learning (Spark, Kafka, Keras and Tensorflow).
+These notebooks rely on different technologies and frameworks for Big Data and machine learning (Spark, Kafka, Keras and Tensorflow). We summarize below different ways to have your environment set up. 
 
 ## Local setup (Linux)
 
@@ -34,13 +34,22 @@ These notebooks rely on different technologies and frameworks for Big Data and m
 
 Install Anaconda Python (see https://www.anaconda.com/download/, choose Linux distribution, and Python 3.6 version for 64-bit x86 systems). 
 
+Make sure the binaries are in your PATH. Anaconda installer proposes to add them at the end of the installation process. If you decline, you may later add
+
+```
+export ANACONDA_HOME=where_you_installed_anaconda
+export PATH=$ANACONDA_HOME/bin:$PATH
+``` 
+
+
 ### Spark
 
-Download from https://spark.apache.org/downloads.html (Use latest version, currently 2.3.0, prebuilt for Apache Hadoop 2.7). Untar and add executables to your PATH
+DDownload from https://spark.apache.org/downloads.html (Use version 2.2.1, prebuilt for Apache Hadoop 2.7). Untar and add executables to your PATH, as well as Python libraries to PYTHON_PATH
 
 ```
 export SPARK_HOME=where_you_untarred_spark
 export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
+export PYTHONPATH="SPARK_HOME/python/lib/pyspark.zip: SPARK_HOME/python/lib/py4j-0.10.4-src.zip"
 ``` 
 
 ### Kafka
@@ -62,12 +71,24 @@ pip install tensorflow
 pip install keras
 ```
 
+### Notebook
+
+The notebook is part of Anaconda. Start Jupyter notebook with 
+
+```
+jupyter notebook
+```
+
+and open in the browser at `127.0.0.1:8888`
+
+
+
 ## Big Data cluster
 
 Connect with 
 
 ```
-ssh -p 30 -L 18089:bd05:18089 -L 8081:localhost:8080 -L 8000:localhost:8000 -L 8888:hue:8888 -L 4042:bd06:4042 yleborgn@bigdata.ulb.ac.be 
+ssh -p 30 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yleborgn@bigdata.ulb.ac.be 
 ```
 
 If you get the following message 
@@ -82,7 +103,10 @@ Open `.ssh/known_hosts`, delete all entries starting with `bigdata.ulb.ac.be`, a
 
 
 ```
+#Add Anaconda binares to your PATH
 export PATH=/etc/anaconda3/bin:$PATH
+
+#This is needed to use Yarn as the master for Spark
 export HADOOP_CONF_DIR=/etc/hadoop/conf
 ```
 
@@ -92,24 +116,42 @@ In order to ease the setting-up of the environment, we also prepared a [Docker](
 
 ## Computer rooms
 
-Download from https://spark.apache.org/downloads.html (Use latest version, currently 2.3.0, prebuilt for Apache Hadoop 2.7). 
+### Anaconda
+
+Anaconda can be found in `/serveur/logiciels/anaconda3`. Use
+
+```
+export ANACONDA_HOME=/serveur/logiciels/anaconda3
+export PATH=$ANACONDA_HOME/bin:$PATH
+``` 
+
+to set up Anaconda Python. 
+
+### Spark
+
+Download from https://spark.apache.org/downloads.html (Use version 2.2.1, prebuilt for Apache Hadoop 2.7). 
 
 Untar and add executables to your PATH
 
 ```
 export SPARK_HOME=where_you_untarred_spark
 export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
+export PYTHONPATH="SPARK_HOME/python/lib/pyspark.zip: SPARK_HOME/python/lib/py4j-0.10.4-src.zip"
 ``` 
  
-Due to permission restrictions, you should manually add the execution flags to the executables you need to use, in particular
+Due to permission restrictions, you should manually add the execution flags to the executables that will be needed to start spark sessions, more specifically
 
 ```
-
+chmod a+x $SPARK_HOME/bin/pyspark
+chmod a+x $SPARK_HOME/bin/spark-submit
+chmod a+x $SPARK_HOME/bin/spark-class
 ```
 
 You may then start `pyspark` from the command line, and open the Spark UI at `127.0.0.1:4040`.
 
-Start Jupyter notebook with 
+### Notebook
+
+The notebook is part of Anaconda. Start Jupyter notebook with 
 
 ```
 jupyter notebook
