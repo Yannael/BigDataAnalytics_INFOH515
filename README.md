@@ -30,6 +30,10 @@ git clone https://github.com/Yannael/BigDataAnalytics_INFOH515
 
 If using the course cluster, you will have to use SFTP to send this folder to the cluster. 
 
+## Check Spark is working
+
+After setting up your environment - see below, you should be able to run the notebooks in `Check_Setup`
+
 # Environment setup 
 
 These notebooks rely on different technologies and frameworks for Big Data and machine learning (Spark, Kafka, Keras and Tensorflow). We summarize below different ways to have your environment set up. 
@@ -183,7 +187,7 @@ On the cluster, the following environment variables should be set:
 ```
 # For Yarn, so that Spark knows where it runs
 export HADOOP_CONF_DIR=/etc/hadoop/conf
-# For Python, so Spark knows which version to use (and we want Anaconda to be used, so we have access to numpy, pandas, and so forth)
+# For Yarn, so Spark knows which version to use (and we want Anaconda to be used, so we have access to numpy, pandas, and so forth)
 export PYSPARK_PYTHON=/etc/anaconda3/bin/python
 export PYSPARK_DRIVER_PYTHON=/etc/anaconda3/bin/python
 ```
