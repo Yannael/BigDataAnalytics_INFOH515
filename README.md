@@ -196,7 +196,17 @@ export PYSPARK_DRIVER_PYTHON=/etc/anaconda3/bin/python
 
 Simply connect on port 8000 locally (thanks to the SSH redirection), at `127.0.0.1:8000` in your browser.
 
-For pushing data on the cluster, the best is to use SFTP. However, the notebook allows you to upload files ('upload' button at the top right corner), which you can use as a quick workaround to get a notebook on the cluster.
+For pushing data on the cluster, the best is to use SFTP, with `scp` command for example.
+
+```
+tar cvzf BigDataAnalytics_INFOH515.tgz BigDataAnalytics_INFOH515
+scp -P 30 BigDataAnalytics_INFOH515.tgz yourlogin@bigdata.ulb.ac.be:/home/yourlogin
+ssh -p 3128 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
+tar xvzf BigDataAnalytics_INFOH515.tgz
+```
+
+The notebook otherwise allows you to upload files ('upload' button at the top right corner), which you can use as a quick workaround to get a notebook on the cluster.
+
 
 
 #### Test with Check_Setup
