@@ -59,7 +59,7 @@ Download from https://spark.apache.org/downloads.html (Use version 2.2.1, prebui
 ```
 export SPARK_HOME=where_you_untarred_spark
 export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
-export PYTHONPATH="SPARK_HOME/python/lib/pyspark.zip:SPARK_HOME/python/lib/py4j-0.10.4-src.zip"
+export PYTHONPATH="$SPARK_HOME/python/lib/pyspark.zip:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip"
 ``` 
 
 ### Kafka
