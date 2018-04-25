@@ -56,7 +56,7 @@ cd INFO-H515
 Git clone the repository for the course
 
 ```
-git clone https://gitlab.com/yannael/bda_course
+git clone https://github.com/Yannael/BigDataAnalytics_INFOH515
 ```
 
 Cd to the bda_course folder, and set this folder as a `BDACOURSE` environment variable
