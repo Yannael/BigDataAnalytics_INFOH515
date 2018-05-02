@@ -151,13 +151,13 @@ and open in the browser at `127.0.0.1:8888`
 In general (wired connection on campus, from home, or reasonably open wifi):
 
 ```
-ssh -p 30 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
+ssh -p 30 -L 8000:jupyter:8000 -L 8888:cdh02:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
 ```
 
 On Eduroam (port 30 is blocked)
 
 ```
-ssh -p 3128 -L 8000:jupyter:8000 -L 8888:hue:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
+ssh -p 3128 -L 8000:jupyter:8000 -L 8888:cdh02:8888 -L 8088:cdh02:8088 yourlogin@bigdata.ulb.ac.be 
 ```
 
 Note:
