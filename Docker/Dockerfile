@@ -56,8 +56,9 @@ USER root
 RUN pip install tensorflow==1.6
 RUN pip install keras==2.1
 RUN pip install plotly
+RUN pip install livelossplot
 
-#Startup (start Cassandra, Zookeeper, Kafka producer)
+#Startup (start Zookeeper and Kafka servers)
 ADD startup_script.sh /usr/bin/startup_script.sh
 RUN chmod +x /usr/bin/startup_script.sh
 
