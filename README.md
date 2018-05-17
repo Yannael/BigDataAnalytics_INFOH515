@@ -2,6 +2,8 @@
 
 #### *Yann-Aël Le Borgne, Jacopo De Stefani and Gianluca Bontempi* - [Machine Learning Group](http://mlg.ulb.ac.be) 
 
+The course slides (analytics part) are available in the `Analytics_Course_Slides` folder. 
+
 # Exercise classes - Overview 
 
 This repository contains the material for the exercise classes of the ULB/VUB Big Data Analytics master course (first semester 2018) - Advanced analytics part.
