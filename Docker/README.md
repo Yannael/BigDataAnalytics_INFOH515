@@ -59,10 +59,10 @@ Git clone the repository for the course
 git clone https://github.com/Yannael/BigDataAnalytics_INFOH515
 ```
 
-Cd to the bda_course folder, and set this folder as a `BDACOURSE` environment variable
+Cd to the `BigDataAnalytics_INFOH515` folder
 
 ```
-cd bda_course
+cd BigDataAnalytics_INFOH515
 ```
 
 Finally, give recursive permission to all for writing to it (ease the sharing with Docker container)
@@ -76,7 +76,7 @@ The Docker container should now be able to read/write to your host ```bda_course
 ### 3.2. Start container
 
 
-**From the ```bda_course``` folder**, start the container with
+**From the ```BigDataAnalytics_INFOH515 ``` folder**, start the container with
 
 ```
 docker run -v `pwd`:/home/guest/shared -p 8888:8888 -p 4040:4040 -it yannael/bda_advancedanalytics bash
