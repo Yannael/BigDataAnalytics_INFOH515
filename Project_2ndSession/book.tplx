@@ -1,0 +1,35 @@
+% Default to the notebook output style
+((* if not cell_style is defined *))
+    ((* set cell_style = 'style_ipython.tplx' *))
+((* endif *))
+
+% Inherit from the specified cell style.
+((* extends cell_style *))
+
+
+((* block docclass *))
+\documentclass{article}
+((* endblock docclass *))
+
+((* block preamble *))
+((* endblock preamble *))
+
+((* block title *))
+\title{INFO-H515 - Big Data Scalable Analytics\\Project Assignment - Phase II - 2nd session}
+\author{Yann-A\"el Le Borgne, Jacopo De Stefani and Gianluca Bontempi}
+\date{2017-2018}
+((* endblock title *))
+
+((* block abstract *))
+((* endblock abstract *))
+
+% Define block headings
+% Note: latex will only number headings that aren't starred 
+% (i.e. \subsection , but not \subsection* )
+
+((* block h2 -*))\section((* endblock h2 -*))
+((* block h3 -*))\subsection((* endblock h3 -*))
+((* block h4 -*))\subsubsection((* endblock h4 -*))
+((* block h5 -*))\paragraph((* endblock h5 -*))
+((* block h6 -*))\subparagraph((* endblock h6 -*))
+
