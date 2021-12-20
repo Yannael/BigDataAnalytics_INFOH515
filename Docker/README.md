@@ -3,14 +3,14 @@
 
 ## Developed by Giovanni Buroni (Dockerfile), Jacopo De Stefani (Windows fixes) 
 
-This Dockerfile sets up a complete streaming environment for experimenting with Kafka and Spark streaming (PySpark). It installs
+This Dockerfile sets up a complete streaming environment on Ubuntu 20.04 for experimenting with Kafka and Spark streaming (PySpark). It installs
 
-* Kafka 2.12-2.3;
-* Spark 2.4.5. 
+* Kafka 3.0.0
+* Spark 3.2.0 
 
 It additionnally installs
 
-* Anaconda distribution for Python 3.7;
+* Anaconda distribution for Python 3.9;
 * Jupyter notebook for Python; 
 * Geopandas python package for geospatial data (http://geopandas.org/index.html).
 
@@ -100,7 +100,8 @@ For Windows, the launching procedure is as follows:
 
 1. Start Docker Toolbox Quickstart Terminal and wait until the startup process is completed.
 2. Open a Windows Powershell terminal
-3. Run the following command in a PowerShell terminal, **from the ```BigDataAnalytics_INFOH515``` folder**:
+3. Run the following command in a PowerShell terminal, **from the `BigDataAnalytics_INFOH515` folder**:
+
 ```
 $nixPath = (($pwd.Path -replace "\\","/") -replace ":","").Trim("/"); $nixPath = "/"+$nixPath.substring(0,1).toLower()+$nixPath.substring(1); docker run -v ${nixPath}:/home/guest/shared -p 8888:8888 -p 4040:4040 -p 23:22 -it jdestefani/ulb_infoh515 bash
 

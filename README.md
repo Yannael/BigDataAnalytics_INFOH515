@@ -4,7 +4,7 @@
 
 # Exercise classes - Overview 
 
-This repository contains the material for the exercise classes of the ULB/VUB Big Data Analytics master course (first semester 2020) - Advanced analytics part.
+This repository contains the material for the exercise classes of the ULB/VUB Big Data Analytics master course (first semester 2022) - Advanced analytics part.
 
 These hands-on sessions provide:
 
@@ -38,7 +38,7 @@ These notebooks rely on different technologies and frameworks for Big Data and m
 
 ### Python
 
-Install Anaconda Python (see https://www.anaconda.com/download/, choose Linux distribution, and Python 3.6 version for 64-bit x86 systems). 
+Install Anaconda Python (see https://www.anaconda.com/download/, choose the latest Linux distribution (Python 3.9 at the writing of these instructions).
 
 Make sure the binaries are in your PATH. Anaconda installer proposes to add them at the end of the installation process. If you decline, you may later add
 
@@ -47,10 +47,11 @@ export ANACONDA_HOME=where_you_installed_anaconda
 export PATH=$ANACONDA_HOME/bin:$PATH
 ``` 
 
+to your `.bash_rc`.
 
 ### Spark
 
-Download from https://spark.apache.org/downloads.html (Use version 2.2.1, prebuilt for Apache Hadoop 2.7). Untar and add executables to your PATH, as well as Python libraries to PYTHONPATH
+Download from https://spark.apache.org/downloads.html (Use version 3.2.0 (October 2020), prebuilt for Apache Hadoop 3.3). Untar and add executables to your PATH, as well as Python libraries to PYTHONPATH
 
 ```
 export SPARK_HOME=where_you_untarred_spark
