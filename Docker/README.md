@@ -6,7 +6,7 @@
 This Dockerfile sets up a complete streaming environment on Ubuntu 20.04 for experimenting with Kafka and Spark streaming (PySpark). It installs
 
 * Kafka 3.0.0
-* Spark 3.2.0 
+* Spark 3.2.1 
 
 It additionnally installs
 
@@ -16,7 +16,7 @@ It additionnally installs
 
 ## 0. Docker installation
 
-Docker is a software container platform, which allows to isolate OS environments. Its main benefits over virtual machines are a reduced footprint (starting from 60MB for a Linux distribution - for example [ubuntu](https://hub.docker.com/_/ubuntu/)), and an easy way reconfigure an OS environment. Note: The Docker container for this course is 7.7GB, mostly due to the Anaconda (>1GB) and Spark (>1GB) distributions.
+Docker is a software container platform, which allows to isolate OS environments. Its main benefits over virtual machines are a reduced footprint (starting from 60MB for a Linux distribution - for example [ubuntu](https://hub.docker.com/_/ubuntu/)), and an easy way reconfigure an OS environment. Note: The Docker container for this course is 5.5GB, mostly due to the Anaconda (>3.5GB) distribution.
 
 For more information on Docker, see: 
 
@@ -58,8 +58,15 @@ The image is called ```ulb_infoh515``` and is available from DockerHub (Note: im
 To install the image, use the standard ```docker pull``` command 
 
 ```
-docker pull jdestefani/ulb_infoh515
+docker pull yannael/ulb_infoh515
 ```
+
+**Note: If you have a Mac with an M1 chip, use**
+
+```
+docker pull yannael/ulb_infoh515_m1
+```
+
 
 Git clone the repository for the course
 
@@ -90,9 +97,11 @@ The Docker container should now be able to read/write to your **host ```BigDataA
 From the ```BigDataAnalytics_INFOH515``` folder, start the container with
 
 ```
-docker run -v `pwd`:/home/guest/shared -p 8888:8888 -p 4040:4040 -p 23:22 -it jdestefani/ulb_infoh515 bash
+docker run -v `pwd`:/home/guest/shared -p 8888:8888 -p 4040:4040 -p 23:22 -it yannael/ulb_infoh515 bash
 
 ```
+
+**note**: Use `ulb_infoh515_m1` if you have a Mac with an M1 chip.
 
 #### Windows 
 
