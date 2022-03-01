@@ -1,7 +1,5 @@
 # [INFO-H515 - Big Data Scalable Analytics](https://uv.ulb.ac.be/course/view.php?id=85246)
-# Docker container for the course and for Big Data Geospatial Analysis in Kafka & Spark Streaming (PySpark)
-
-## Developed by Giovanni Buroni (Dockerfile), Jacopo De Stefani (Windows fixes) 
+# Docker container for Big Data Analytics with Spark (PySpark)
 
 This Dockerfile sets up a complete streaming environment on Ubuntu 20.04 for experimenting with Kafka and Spark streaming (PySpark). It installs
 
@@ -12,11 +10,10 @@ It additionnally installs
 
 * Anaconda distribution for Python 3.9;
 * Jupyter notebook for Python; 
-* Geopandas python package for geospatial data (http://geopandas.org/index.html).
 
 ## 0. Docker installation
 
-Docker is a software container platform, which allows to isolate OS environments. Its main benefits over virtual machines are a reduced footprint (starting from 60MB for a Linux distribution - for example [ubuntu](https://hub.docker.com/_/ubuntu/)), and an easy way reconfigure an OS environment. Note: The Docker container for this course is 5.5GB, mostly due to the Anaconda (>3.5GB) distribution.
+Docker is a software container platform, which allows to isolate OS environments. Its main benefits over virtual machines are a reduced footprint (starting from 60MB for a Linux distribution - for example [ubuntu](https://hub.docker.com/_/ubuntu/)), and an easy way reconfigure an OS environment. Note: The Docker container for this course is 6.2GB, mostly due to the Anaconda (around 4GB) distribution.
 
 For more information on Docker, see: 
 
@@ -61,17 +58,10 @@ To install the image, use the standard ```docker pull``` command
 docker pull yannael/ulb_infoh515
 ```
 
-**Note: If you have a Mac with an M1 chip, use**
-
-```
-docker pull yannael/ulb_infoh515_m1
-```
-
-
 Git clone the repository for the course
 
 ```
-git clone https://github.com/jdestefani/BigDataAnalytics_INFOH515
+git clone https://github.com/yannael/BigDataAnalytics_INFOH515
 ```
 
 Cd to the `BigDataAnalytics_INFOH515` folder
@@ -101,8 +91,6 @@ docker run -v `pwd`:/home/guest/shared -p 8888:8888 -p 4040:4040 -p 23:22 -it ya
 
 ```
 
-**note**: Use `ulb_infoh515_m1` if you have a Mac with an M1 chip.
-
 #### Windows 
 
 For Windows, the launching procedure is as follows:
@@ -112,7 +100,7 @@ For Windows, the launching procedure is as follows:
 3. Run the following command in a PowerShell terminal, **from the `BigDataAnalytics_INFOH515` folder**:
 
 ```
-$nixPath = (($pwd.Path -replace "\\","/") -replace ":","").Trim("/"); $nixPath = "/"+$nixPath.substring(0,1).toLower()+$nixPath.substring(1); docker run -v ${nixPath}:/home/guest/shared -p 8888:8888 -p 4040:4040 -p 23:22 -it jdestefani/ulb_infoh515 bash
+$nixPath = (($pwd.Path -replace "\\","/") -replace ":","").Trim("/"); $nixPath = "/"+$nixPath.substring(0,1).toLower()+$nixPath.substring(1); docker run -v ${nixPath}:/home/guest/shared -p 8888:8888 -p 4040:4040 -p 23:22 -it yannael/ulb_infoh515 bash
 
 ```
 
