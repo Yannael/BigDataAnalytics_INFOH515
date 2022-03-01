@@ -51,19 +51,16 @@ RUN $HOME/anaconda3/bin/pip install kafka-python
 RUN echo "export SPARK_HOME=$HOME/spark" >> /home/guest/.bashrc
 RUN echo "export KAFKA_HOME=$HOME/kafka" >> /home/guest/.bashrc
 RUN echo "export PATH=$HOME/anaconda3/bin:$HOME/spark/bin:$HOME/spark/sbin:$HOME/kafka/bin:$PATH" >> /home/guest/.bashrc
-RUN echo "export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/pyspark.zip:$SPARK_HOME/python/lib/py4j-0.10.9.2-src.zip:$PYTHONPATH" >> /home/guest/.bashrc
+RUN echo "export PYTHONPATH=$HOME/spark/python:$HOME/spark/python/lib/pyspark.zip:$HOME/spark/python/lib/py4j-0.10.9.3-src.zip:$PYTHONPATH" >> /home/guest/.bashrc
 
 # Add alias for notebook
-RUN echo "alias notebook=\"jupyter notebook --ip='*' --NotebookApp.iopub_data_rate_limit=2147483647 --no-browser \" " >> /home/guest/.bashrc
+RUN echo "alias notebook=\"jupyter notebook --ip='0.0.0.0' --NotebookApp.iopub_data_rate_limit=2147483647 --no-browser \" " >> /home/guest/.bashrc
 
 USER root
 
 # Startup (start Zookeeper, Kafka servers)
 ADD kafka_startup_script.sh /usr/bin/kafka_startup_script.sh
 RUN chmod a+x /usr/bin/kafka_startup_script.sh
-
-# To start the container (see https://github.com/Yannael/BigDataAnalytics_INFOH515/tree/master/Docker):
-# docker run -v `pwd`:/home/guest/shared -p 8888:8888 -p 4040:4040 -it bda bash
 
 
 
